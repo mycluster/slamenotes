@@ -2,7 +2,7 @@
 
 Team Arctic's project for CS 3398, fall 2016: A web app for note-taking and sharing, geared towards students.
 
-This project is hosted online at [Slam eNotes](http://slamenotes.com) (slamenotes.com).
+This project is hosted online at [Slam eNotes](http://slamenotes.com) (slamenotes.com) (no longer active 6/2017).
 
 We run our project on a CentOS 7.2 server using Python 3.4, with MariaDB and Apache, but thanks to the flexibility of Django, there are plentiful options when it comes to OS, database, and webserver selection.
 

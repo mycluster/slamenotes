@@ -1,0 +1,10 @@
+deployment:
+  production:
+    branch: master
+    #tag: /[0-9]+(\.[0-9]+)*/ Possibly switch to this later to only deploy on version release
+    owner: CS3398-Arctic
+    commands:
+      - ssh $SSH_USERNAME@104.239.240.172 "~/update_site.sh"
+machine:
+  python:
+    version: 3.4.3

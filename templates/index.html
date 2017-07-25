@@ -1,0 +1,130 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Slam eNotes - Share notes with classmates</title>
+        <meta name="description" content="A note-sharing app for students">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+
+        <link rel="stylesheet" href="{% static 'css/normalize.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}?1480891167">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+    </head>
+    <body{% if theme == 'dark' %} class="dark"{% endif %}>
+		<!-- Banner -->
+        <section id="banner">
+            <div class="inner split">
+                <section>
+                    <img src="{% static 'images/logo-bright.png' %}" alt="Slam eNotes"  height="110">
+                    <h2>A note-sharing app built for you.</h2>
+                </section>
+                <section>
+                    <p>Built by students, for students. With Slam eNotes, it&rsquo;s easy to share digital lecture notes with your classmates.</p>
+                    <ul class="actions">
+                        <li><a href="channel/1" class="button special">{% if user.is_authenticated %}Take notes{% else %}Get started{% endif %}</a></li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+
+
+		<!-- Registration -->
+        <section id="registration" class="wrapper">
+            <div class="inner {% if user.is_authenticated %}logged-in{% else %}split{% endif %}">
+                    {% if user.is_authenticated %}
+                <h2>Welcome, {{ user.email }}.</h2>
+                <a class="button" href="{% url 'logout' %}">Log out</a>
+                    {% else %}
+                <section>
+                        {% if account_created %}
+                    <p>
+                        Account created successfully.{% if not debug_enabled %} Activate your account using the link sent to your email address. {% endif %}
+                    </p>
+                        {% elif account_just_activated %}
+                    <p>
+                        Account successfully activated.
+                    </p>
+                        {% endif %}
+                    <form id="login-form" method="post" action="{% url 'index' %}">
+                        <h3>Log in</h3>
+                        {% if invalid_login %}
+                        <p>
+                            Invalid email/password combination entered.
+                        </p>
+                        {% elif account_not_activated %}
+                        <p>
+                            Specified account has not been activated yet. Activate your account using the link sent to your email address.
+                        </p>
+                        {% endif %}
+                        {% csrf_token %}
+                        <p>
+                            {{ form_login.email }}
+                        </p>
+                        <p>
+                            {{ form_login.password }}
+                        </p>
+                        <input type="submit" name="login-form" value="Log in" />
+                    </form>
+                </section>
+                <section>
+                    <form id="signup-form" method="post" action="{% url 'index' %}">
+                        <h3>Sign up with Texas State email</h3>
+                        {% csrf_token %}
+                        {{ form_signup.as_p }}
+                        <input type="submit" name="signup-form" value="Create Account" />
+                    </form>
+                    {% endif %}
+                </section>
+            </div>
+        </section>
+
+        <!-- Information -->
+        <section id="information" class="wrapper">
+            <div class="inner split">
+                <section>
+                    <h2>Planned features:</h2>
+                    <ul class="checklist">
+                        <li>Create User Accounts</li>
+                        <li>Upload text notes</li>
+                        <li>Search for notes</li>
+                        <li>Edit text notes</li>
+                        <li>Create new channels</li>
+                    </ul>
+                    <ul>
+                        <li>Post handwritten notes</li>
+                        <li>Rate notes</li>
+                        <li>Sort notes by class session</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Follow our development</h2>
+                    <ul class="contact">
+                        <li class="fa-github"><a href="https://github.com/CS3398-Arctic">CS3398-Arctic on Github</a></li>
+                    </ul>
+                    <h3>Switch theme</h3>
+                    <input id="theme-selection" type="checkbox" value="on"{% if theme == 'dark' %} checked{% endif %}>
+                    <label for="theme-selection"><span id="theme-indicator-dark" class="fa fa-moon-o"></span><span id="theme-indicator-light" class="fa fa-sun-o"></span>Theme</label>
+                </section>
+            </div>
+        </section>
+
+		<!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                &copy; 2016 Texas State University Software Engineering - Team Arctic. Prism by <a href="https://templated.co">TEMPLATED</a>.
+            </div>
+        </footer>
+
+		<!-- Scripts -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{% static 'js/vendor/jquery-1.11.2.min.js' %}"><\/script>')</script>
+        <script src="{% static 'js/main.js' %}"></script>
+	</body>
+</html>

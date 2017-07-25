@@ -54,7 +54,6 @@ Sign-ups require a @txstate.edu email address for account creation.
 
 ### Contributors
 - Peter Cassetta
-- Michael Luster
 - Tristan Thielemann
 - Paul Lindsey
 - Dillon Rowan

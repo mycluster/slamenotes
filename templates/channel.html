@@ -1,0 +1,235 @@
+{% load static from staticfiles %}{% load filters %}<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{{ channel.title }} - Slam eNotes</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+
+        <link rel="stylesheet" href="{% static 'css/normalize.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/channel.css' %}?1480999512">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+    </head>
+    <body class="full-height{% if theme == 'dark' %} dark{% endif %}{% if debug %} debug{% endif %}">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="header-container">
+            <header class="wrapper clearfix">
+                <h1 class="title">
+                    <a href="{% url 'index' %}"><img id="logo" src="{% if theme == 'dark' %}{% static 'images/logo-short-bright.png' %}{% else %}{% static 'images/logo-short.png' %}{% endif %}" alt="Slam eNotes" height="38" /></a>
+                </h1>
+                <input id="note-search" type="text" placeholder="search notes" />
+            </header>
+        </div>
+
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+                {% if user.is_authenticated %}
+                <form id="note-form" method="post">
+                    {% csrf_token %}
+                    <p>
+                        <textarea cols="" id="id_body_text" name="body_text" placeholder="Write a note..." rows="" required></textarea>
+                        <input id="id_channel" name="channel" type="hidden" value="{{ channel.pk }}" />
+                    </p>
+                    <p style="display:none">
+                        Post a handwritten note (upload to <a href="http://imgur.com" target="_blank">Imgur</a> and submit link)
+                        <input id="id_url" name="url" type="url" placeholder="http://i.imgur.com/...">
+                    </p>
+                    <p>
+                        <input id="note-post" type="submit" value="Post">
+                    </p>
+                </form>
+                {% else %}
+                <p class="login-required">
+                    You must be <a href="{% url 'index' %}#login-form">logged in</a> to post notes.
+                </p>
+                {% endif %}
+
+                {% now "Y" as current_year %}
+                {% now "M d, Y" as current_date %}
+                <div id="results">
+                    {% for note in notes %} {# Display all notes. #}
+                        {% if note.body_text %} {# or note.url TODO: Enable this for handwritten notes #}
+                    <article id="note-{{ note.id }}" tabindex="0" class="note">
+                            {% if note.body_text %}
+                        <div class="note-body"><p>{{ note.body_text }}</p></div> {# Display note text. #}
+                            {% else %}
+                        <figure class="note-image"><img src="{{ note.url }}"></figure> {# Display note image. #}
+                            {% endif %}
+                        <p class="note-meta clearfix">
+                            {% if user.is_authenticated %}
+                                {% if note.author == user %}
+                            <span class="note-author">You,&nbsp;</span>
+                                {% else %}
+                            <span class="note-author">{{ note.author.email }},&nbsp;</span> {# Display note author's email for logged-in users. #}
+                                {% endif %}
+                            {% endif %}
+                            <span class="note-date"> {# Display note created date. #}
+                                {% with cd=note.created_date %}
+                                <time datetime="{{ cd|date:"c" }}">
+                                    {% if cd|date:"M d, Y" == current_date %}
+                                        {{ cd|timesince }}
+                                    {% else %} {# Intentionally ugly here to avoid whitespace between day and potential comma. #}
+                                        {{ cd|date:"M d" }}{% if cd|date:"Y" != current_year %}{{ cd|date:", Y" }}{% endif %}
+                                    {% endif %}
+                                </time>
+                                {% endwith %}
+                            </span>
+                            <span class="note-comments">0 comments</span>
+                            {% if user.is_authenticated %}
+                            <span class="note-actions">
+                                {% if note.author == user or user.is_superuser %} {# Show the edit/delete buttons to the author, or a superuser #}
+                                <a class="note-edit fa fa-pencil" href="#" role="button" aria-label="edit"></a><a class="note-delete fa fa-trash" href="{% url 'ajax' %}?action=delete&note={{ note.id }}" role="button" aria-label="delete"></a><a class="note-edit-cancel fa fa-times" href="#" role="button" aria-label="cancel edit"></a>
+                                {% endif %}
+                            </span>
+                            {% endif %}
+                        </p>
+                    </article>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div> <!-- #main -->
+            <span id="update-indicator">Notes changed. <a href="#">Update</a></span>
+            <div id="invis-edit-form" class="invisible">
+                {% if user.is_authenticated %}
+                <form id="note-edit-form" method="post">
+                    {% csrf_token %}
+                    <p>
+                        <textarea cols="" id="edit_body_text" name="body_text" placeholder="Write a note..." rows="" required=""></textarea>
+                        <input id="edit_channel" name="channel" type="hidden" value="{{ channel.pk }}" />
+                    </p>
+                    <p>
+                        <input id="note-edit-post" type="submit" value="Update">
+                    </p>
+                </form>
+                {% endif %}
+            </div>
+            <div id="invis-deletion-container" class="visuallyhidden">
+                <div id="note-delete-prompt">
+                    <p>
+                        Are you sure you want to delete this note?
+                    </p>
+                    <p id="note-delete-options">
+                        <a id="note-delete-cancel" href="#" role="button" aria-label="cancel deletion">Cancel</a>
+                        <a id="note-delete-proceed" href="#" role="button" aria-label="confirm deletion">Delete</a>
+                    </p>
+                </div>
+            </div>
+        </div> <!-- #main-container -->
+
+        <aside class="sidebar-container">
+            <div id="channel-overlay-circle"></div>
+            <div id="courses">
+                <h2 id="courses-menu-toggle" title="{{ channel.prefix }} {{ channel.course_number }}.{{ channel.section_number|leading_zeros:3 }} - {{ channel.title }}">
+                    {{ channel.prefix }} {{ channel.course_number }}.{{ channel.section_number|leading_zeros:3 }} - {{ channel.title }}
+                </h2>
+                <div class="courses-other">
+                    <h2 id="courses-add">Add new channel</h2>
+                </div>
+            </div>
+            <h3 class="class-title">CLASS SESSIONS</h3>
+            <div class="session-list">
+                <h3 class="viewing">All Sessions</h3>
+            </div>
+            <button id="collapse-menu" class="fa fa-chevron-circle-left">Collapse Menu</button>
+            <button id="expand-menu" class="fa fa-chevron-circle-right">Expand Menu</button>
+        </aside>
+
+        <aside class="channel-overlay">
+            <nav id="overlay-tabs">
+                <button id="overlay-tab-search"><span class="fa fa-search"></span> Search channels</button>
+                {% if user.is_authenticated %}<button id="overlay-tab-create">+ Create new channel</button>{% endif %}
+            </nav>
+            <button id="channel-overlay-close"></button>
+            <section id="channel-overlay-search">
+                Search existing channels...
+                <input id="channel-search" placeholder="search channel" type="text">
+                <div>
+                {% for a_channel in channels %}
+                    <p class="channel">
+                        <a href="/channel/{{ a_channel.pk }}">
+                            {{ a_channel.prefix }} {{ a_channel.course_number }}.{{ a_channel.section_number|leading_zeros:3 }} - {{ a_channel.title }}<br>
+                            Instructor: {{ a_channel.instructor }}
+                        </a>
+                    </p>
+                {% endfor %}
+                </div>
+            </section>{% if user.is_authenticated %}
+            <section id="channel-overlay-create">
+                Create a new channel...
+                <form id="channel-creation-form" method="post">
+                    {% csrf_token %}
+                    <p><label for="id_title">Class Title:</label><br><input id="id_title" maxlength="50" name="title" type="text" required /></p>
+                    <p><label for="id_instructor">Instructor:</label><br><input id="id_instructor" maxlength="50" name="instructor" type="text" required /></p>
+                    <p><label for="id_prefix">Prefix:</label><br><input id="id_prefix" maxlength="2" name="prefix" type="text" required /></p>
+                    <p class="channel-numbers">
+                        <label for="id_course_number">Course #:</label><label for="id_section_number">Section #:</label>
+                        <br><input id="id_course_number" min="0" name="course_number" type="number" required />
+                        <input id="id_section_number" min="0" name="section_number" type="number" required />
+                    </p>
+                    <p><label for="id_postfix">Postfix:</label><br><input id="id_postfix" maxlength="1" name="postfix" type="text" /></p>
+                    <p><label for="id_first_class_day">Class Start Day:</label><br><input id="id_first_class_day" name="first_class_day" type="text" value="" placeholder="YYYY-MM-DD" required /></p>
+                    <p><label for="id_last_class_day">Last Class Day:</label><br><input id="id_last_class_day" name="last_class_day" type="text" value="" placeholder="YYYY-MM-DD" required /></p>
+                    <p class="channel-days">
+                        Meeting Days:
+                        <br><input id="id_meeting_day_mon" name="meeting_day_mon" type="checkbox" /> <label for="id_meeting_day_mon">Mon</label>
+                        <input id="id_meeting_day_tue" name="meeting_day_tue" type="checkbox" /> <label for="id_meeting_day_tue">Tues</label>
+                        <input id="id_meeting_day_wed" name="meeting_day_wed" type="checkbox" /> <label for="id_meeting_day_wed">Wed</label>
+                        <br><input id="id_meeting_day_thu" name="meeting_day_thu" type="checkbox" /> <label for="id_meeting_day_thu">Thu</label>
+                        <input id="id_meeting_day_fri" name="meeting_day_fri" type="checkbox" /> <label for="id_meeting_day_fri">Fri</label>
+                        <input id="id_meeting_day_sat" name="meeting_day_sat" type="checkbox" /> <label for="id_meeting_day_sat">Sat</label>
+                    </p>
+                    <p class="channel-time">
+                        <label for="id_start_time_h">Start Time (24H):</label><br>
+                        <input id="id_start_time_h" min="0" max="23" name="start_time_h" type="number" placeholder="HH" value="" required />
+                        :
+                        <input id="id_start_time_m" min="0" max="59" name="start_time_m" type="number" placeholder="mm" value="" required />
+                    </p>
+                    <p class="channel-time">
+                        <label for="id_start_time_h">End Time (24H):</label><br>
+                        <input id="id_end_time_h" min="0" max="23" name="end_time_h" type="number" placeholder="HH" value="" required />
+                        :
+                        <input id="id_end_time_m" min="0" max="59" name="end_time_m" type="number" placeholder="mm" value="" required />
+                    </p>
+                    <p class="channel-creation-submit">
+                        <input type="submit" value="Create channel">
+                    </p>
+                </form>
+            </section>{% endif %}
+        </aside>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{% static 'js/vendor/jquery-1.11.2.min.js' %}"><\/script>')</script>
+        <script src="{% static 'js/vendor/jquery.ns-autogrow.min.js' %}"></script>
+
+        <script>
+            $('#id_body_text').autogrow({vertical: true, horizontal: false, flickering: false});
+            $('#edit_body_text').autogrow({vertical: true, horizontal: false, flickering: false});
+
+            if ($( window ).width() < 800) // 50rem
+                $("body").addClass("menu-closed");
+
+
+            var AJAX_URL = "{% url 'ajax' %}";
+            var CHANNEL = {{ channel.pk }};
+
+            var notes_changes = new Object();
+            var last_update = new Date();
+            var user = new Object();
+            user.is_authenticated = {% if user.is_authenticated %}true;
+            user.is_superuser = {% if user.is_superuser %}true;{% else %}false;{% endif %}
+            user.email = "{{ user.email }}";{% else %}false;{% endif %}
+        </script>
+        <script src="{% static 'js/channel.js' %}?1480999512" onload="applyNoteActions();setTimeout(ajaxLiveUpdate, 5 * 1000);"></script>
+        <script src="{% static 'js/vendor/commonmark.js' %}" onload="commonmarkParseAll();"></script>
+    </body>
+</html>

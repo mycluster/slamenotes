@@ -1,0 +1,1246 @@
+/*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
+
+html {
+    color: #222;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+a, a:link, a:visited {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
+}
+
+a:active {
+    color: red;
+}
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ===== Initializr Styles ==================================================
+   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
+   ========================================================================== */
+
+body {
+    font: 16px/26px Helvetica, Helvetica Neue, Arial;
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 5%;
+}
+
+/* ===================
+    ALL: Orange Theme
+   =================== */
+
+.header-container {
+    border-bottom: 20px solid #e1e1e1;
+}
+
+.footer-container,
+.main aside {
+    border-top: 20px solid #e1e1e1;
+}
+
+.header-container,
+.footer-container,
+.main aside {
+    background: #f2f2f2;
+}
+
+.title {
+    color: #222;
+    float: left;
+    margin: 5px 0;
+}
+
+/* ==============
+    MOBILE: Menu
+   ============== */
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+nav a, nav a:visited {
+    display: block;
+    margin-bottom: 10px;
+    padding: 15px 0;
+
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+
+    color: #222;
+    background: #e1e1e1;
+}
+
+nav a:hover {
+    color: #444;
+}
+
+nav a:hover {
+    text-decoration: none;
+}
+
+/* ==============
+    MOBILE: Main
+   ============== */
+
+.main {
+    padding: 30px 0;
+    min-height: calc(100vh - 274px);
+}
+
+.main article h1 {
+    font-size: 2em;
+}
+
+.main aside {
+    color: #222;
+    padding: 0 5% 10px;
+}
+
+.footer-container footer {
+    color: #222;
+    padding: 20px 0;
+}
+
+/* ===============
+    ALL: IE Fixes
+   =============== */
+
+.ie7 .title {
+    padding-top: 20px;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body.full-height {
+    overflow: hidden;
+}
+
+.full-height > .header-container {
+    height: 48px;
+    padding-left: 252px;
+
+    border-bottom-width: 3px;
+    position: relative;
+    z-index: 1;
+
+    -webkit-box-shadow: 0 1px 2px rgba(170, 170, 170, 0.70);
+    -moz-box-shadow: 0 1px 2px rgba(170, 170, 170, 0.70);
+    box-shadow: 0 1px 2px rgba(170, 170, 170, 0.70);
+
+    -webkit-transition: padding-left 0.2s;
+    -moz-transition: padding-left 0.2s;
+    -ms-transition: padding-left 0.2s;
+    -o-transition: padding-left 0.2s;
+    transition: padding-left 0.2s;
+}
+
+.full-height .header-container .title {
+    font-size: 1.5rem;
+}
+
+.debug .title::after {
+    content: 'DEV';
+    background-color: #ff6666;
+    -webkit-border-radius: 0.2rem;
+    -moz-border-radius: 0.2rem;
+    border-radius: 0.2rem;
+    color: white;
+    cursor: default;
+    font-size: 0.7rem;
+    padding: 0.2rem;
+    position: relative;
+    top: -0.5rem;
+}
+
+.full-height .header-container #note-search {
+    border: 0.1rem solid #CCC;
+	float: right;
+	margin-top: 0.8rem;
+    position: fixed;
+    right: 5%;
+}
+
+.full-height .header-container .wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.full-height > .main-container {
+    height: calc(100vh - 51px);
+    margin-left: 14.5rem;
+    overflow-y: scroll;
+    position: relative;
+
+    -webkit-transition: margin-left 0.2s;
+    -moz-transition: margin-left 0.2s;
+    -ms-transition: margin-left 0.2s;
+    -o-transition: margin-left 0.2s;
+    transition: margin-left 0.2s;
+}
+
+.full-height > .main-container #update-indicator {
+    display: none;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+}
+
+.full-height .main {
+    min-height: inherit;
+}
+
+.full-height .login-required {
+    margin: 0 auto 20px;
+    padding: 10px 5%;
+
+    text-align: center;
+}
+
+.full-height .note, .full-height .main-container form {
+    max-width: 500px;
+    width: 100%;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: none;
+    padding: 10px 5%;
+    position: relative;
+    margin: 0 auto 20px;
+
+    border: 1px solid #f7ecbe;
+    background-color: #ffffd6;
+}
+
+.full-height .main-container .note form {
+    background: inherit;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.note:focus, .full-height .main-container form:focus {
+    box-shadow: 0 0 12px rgba(150, 150, 150, 0.2);
+    outline: none;
+}
+
+.note-body p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.note-image {
+    width: 100%;
+    margin: 1.5rem 0 0;
+}
+
+.note-image img {
+    width: 100%;
+}
+
+.note-meta {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.note-date, .note-author, .note-comments {
+    display: block;
+    float: left;
+
+    color: rgba(0,0,0, 0.5);
+    font-size: 0.9em;
+    font-style: italic;
+}
+.note-comments {
+    float: right;
+}
+
+.note-actions {
+    width: 100%;
+
+    display: block;
+    padding: 0.15rem 0.15rem 0 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    font-size: 1.4rem;
+    text-align: right;
+}
+
+.note-actions a, .note-actions a:link, .note-actions a:visited {
+    max-height: 0;
+
+    color: rgba(0,0,0, 0.4);
+    opacity: 0.0;
+    overflow: hidden;
+    padding: 0 6px;
+    text-decoration: none;
+
+    -webkit-transition: color 0.2s, opacity 0.2s, padding 0.2s step-end, max-height 0.2s step-end;
+    -moz-transition: color 0.2s, opacity 0.2s, padding 0.2s step-end, max-height 0.2s step-end;
+    -ms-transition: color 0.2s, opacity 0.2s, padding 0.2s step-end, max-height 0.2s step-end;
+    -o-transition: color 0.2s, opacity 0.2s, padding 0.2s step-end, max-height 0.2s step-end;
+    transition: color 0.2s, opacity 0.2s, padding 0.2s step-end, max-height 0.2s step-end;
+}
+.note:hover .note-actions a, .note:focus .note-actions a, .note .note-actions a:focus {
+    max-height: 2em; /* FIXME: kinda hacky, probably better to do with jQuery */
+    opacity: 1.0;
+    padding: 3px 6px;
+
+    /* if cool sliding effect is wanted, mess with padding's transition time and remove padding's step-ends */
+    -webkit-transition: color 0.2s, opacity 0.2s, padding 1ms 0s step-end, max-height 1ms 0s step-end;
+    -moz-transition: color 0.2s, opacity 0.2s, padding 1ms 0s step-end, max-height 1ms 0s step-end;
+    -ms-transition: color 0.2s, opacity 0.2s, padding 1ms 0s step-end, max-height 1ms 0s step-end;
+    -o-transition: color 0.2s, opacity 0.2s, padding 1ms 0s step-end, max-height 1ms 0s step-end;
+    transition: color 0.2s, opacity 0.2s, padding 1ms 0s step-end, max-height 1ms 0s step-end;
+}
+.note-actions a:hover, .note-actions a:active {
+    color: rgba(0,0,0, 0.7);
+}
+
+.note-actions a:hover.note-delete, .note-actions a:active.note-delete {
+    color: rgba(255, 0, 0, 0.7);
+}
+.note-actions a.note-edit-cancel {
+    display: none;
+}
+
+.editing .note-author,
+.editing .note-body,
+.editing .note-date,
+.editing .note-comments,
+.editing .note-actions a.note-edit,
+.editing .note-actions a.note-delete {
+    display: none;
+}
+.editing .note-actions a.note-edit-cancel {
+    display: inline;
+}
+
+.deleting .note-author,
+.deleting .note-body,
+.deleting .note-date,
+.deleting .note-comments,
+.deleting .note-actions a.note-edit,
+.deleting .note-actions a.note-delete {
+    display: none;
+}
+
+#note-delete-prompt {
+    text-align: center;
+}
+
+#note-delete-proceed, #note-delete-cancel {
+    border: none;
+    padding: 6px 12px;
+    margin: 1rem;
+    background-color: #f7ecbe;
+    color: #333;
+    text-decoration: none;
+}
+
+#note-delete-proceed {
+    background-color: #e65050;
+    color: white;
+}
+
+.full-height > .footer-container {
+    border-top-width: 10px;
+    height: 102px;
+
+    -webkit-box-shadow: 0 -1px 2px rgba(170, 170, 170, 0.70);
+    -moz-box-shadow: 0 -1px 2px rgba(170, 170, 170, 0.70);
+    box-shadow: 0 -1px 2px rgba(170, 170, 170, 0.70);
+    text-align: center;
+}
+
+.full-height .footer-container footer {
+    color: inherit;
+    padding: 0;
+}
+
+#note-form {
+    text-align: right;
+}
+
+#invis-edit-form {
+    position: absolute;
+    top: -10000px;
+    left: -10000px;
+}
+
+#note-edit-form {
+    text-align: right;
+}
+
+.full-height .main-container input[type=url] {
+    border: none;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    width: 100%;
+
+    background-color: #f7ecbe;
+    color: #333;
+}
+
+.full-height .main-container textarea {
+    min-height: 2em;
+    width: 100%;
+
+    border: none;
+    margin-bottom: -1.5em;
+    outline: none;
+    overflow: hidden;
+    resize: none;
+
+    background: none;
+    color: rgba(0,0,0, 0.5);
+
+    -webkit-transition: color 0.2s, height 0.1s;
+    -moz-transition: color 0.2s, height 0.1s;
+    -ms-transition: color 0.2s, height 0.1s;
+    -o-transition: color 0.2s, height 0.1s;
+    transition: color 0.2s, height 0.1s;
+}
+
+.full-height .main-container textarea:focus {
+    color: black;
+}
+
+.full-height .main-container textarea:required {
+    box-shadow: none;
+}
+
+.full-height .main-container input[type=submit] {
+    border: none;
+    padding: 6px 12px;
+
+    background-color: #f7ecbe;
+    color: #333;
+}
+
+form#create-account-form {
+}
+
+form#login-form {
+}
+
+/* ==========================================================================
+   Channel Sidebar
+   ========================================================================== */
+
+.sidebar-container {
+    height: 100vh;
+    width: 14.5rem;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    background: #415568;
+    box-shadow: 0 -1px 2px rgba(170, 170, 170, 0.70);
+    color: white;
+    font-family: Segoe UI Light, sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-transition: left 0.2s;
+    -moz-transition: left 0.2s;
+    -ms-transition: left 0.2s;
+    -o-transition: left 0.2s;
+    transition: left 0.2s;
+}
+.sidebar-container h2 {
+    font-size: 17px;
+    padding: 14px 0 20px 10px;
+    cursor: pointer;
+    height: 24px;
+    overflow: hidden;
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#courses {
+    border-bottom: 2px solid #6f8898;
+    margin-right: 10px;
+}
+
+#courses-menu-toggle {
+    display: block;
+    padding-right: 20px;
+    position: relative;
+
+    color: #DDD;
+}
+#courses-menu-toggle::after {
+    position: absolute;
+    right: 0;
+
+    color: #6f8898;
+    content: '▼';
+}
+.courses-menu-open #courses-menu-toggle::after {
+    content: '✕';
+}
+#courses-menu-toggle:hover {
+    color: white;
+}
+#courses-menu-toggle:hover::after {
+    color: #809aab;
+}
+
+#courses > * > h2 {
+    display: none;
+    padding: 0 20px 20px 10px;
+}
+.courses-menu-open #courses > h2 {
+    border-bottom:none;
+}
+.courses-menu-open #courses > * > h2 {
+    display: block;
+}
+
+.courses-other {
+    position: absolute;
+    background-color: #415568;
+    width: 100%;
+}
+
+.courses-menu-open .courses-other {
+    height: 100vh;
+}
+
+#courses-add {
+    color: #DDD;
+    position: relative;
+}
+#courses-add::before {
+    content: '+';
+    margin-right: 6px;
+}
+#courses-add:hover {
+    color: white;
+}
+
+.session-list {
+  height: calc(100vh - 148px);
+  overflow-y: hidden;
+}
+.session-list:hover {
+    overflow-y: scroll;
+}
+
+.class-title {
+    border-bottom: 0.15rem solid #6f8898;
+    padding: 0.65rem 0 0.65rem 0.65rem;
+    margin: 0 0.65rem 0 0;
+
+    font-size: 0.8rem;
+    font-family: Segoe UI, sans-serif;
+    font-weight: 600;
+    color: #DDD;
+}
+
+.session-list h3 {
+  padding: 5px 0 5px 10px;
+  font-size: 16px;
+  margin: 5px 10px 5px 0;
+  color: #DDD;
+  font-family: Segoe UI, sans-serif;
+  font-weight: 100;
+}
+
+.session-list:hover h3 {
+    margin-right: 0;
+}
+
+.session-list .viewing {
+    color: white;
+    background-color: #7591e1;
+}
+
+#collapse-menu, #expand-menu {
+    background: none;
+    border: none;
+    color: #DDD;
+    font-family: Segoe UI, sans-serif;
+    font-size: 16px;
+    text-align: left;
+    text-decoration: none;
+
+    -webkit-transition: left 0.2s;
+    -moz-transition: left 0.2s;
+    -ms-transition: left 0.2s;
+    -o-transition: left 0.2s;
+    transition: left 0.2s;
+}
+
+#collapse-menu {
+    border-top: 0.15rem solid #6f8898;
+    display: block;
+    padding: 0.65rem 0 0.65rem 0.65rem;
+
+    width: 13.2rem;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+#collapse-menu::before, #expand-menu::before {
+    font-family: FontAwesome;
+    font-size: 1.1rem;
+    padding-right: 0.65rem;
+}
+
+.courses-menu-open #collapse-menu {
+    display: none;
+}
+
+#expand-menu {
+    bottom: 0;
+    left: -14.5rem;
+    padding: 0.65rem;
+    position: fixed;
+    text-decoration: none;
+
+    color: #333;
+}
+
+@media screen and (max-width: 50rem) {
+    #expand-menu::before {
+        margin-left: -0.35rem;
+    }
+    #expand-menu {
+        padding-left: 1rem;
+        width: 0;
+        overflow: hidden;
+        text-indent: 100%;
+        white-space: nowrap;
+    }
+    .full-height > .header-container {
+        padding-left: 0;
+    }
+    .full-height > .main-container {
+        margin-left: 0;
+    }
+}
+
+.menu-closed .header-container {
+    padding-left: 0;
+}
+
+.menu-closed .sidebar-container {
+    left: -14.5rem;
+}
+
+.menu-closed .main-container {
+    margin-left: 0;
+}
+
+.menu-closed #expand-menu {
+    left: 0;
+}
+
+.menu-closed #collapse-menu {
+    left: -14.5rem;
+}
+
+/* ==========================================================================
+   Add Class Overlay
+   ========================================================================== */
+
+#channel-overlay-circle {
+    background-color: #415568;
+    display: block;
+
+    -webkit-border-radius: 150vmax;
+    -moz-border-radius: 150vmax;
+    border-radius: 150vmax;
+
+    height: 0;
+    width: 0;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    z-index: 2;
+
+    -webkit-transition: height 0.5s 0.1s, width 0.5s 0.1s, left 0.5s 0.1s, top 0.5s 0.1s;
+    -moz-transition: height 0.5s 0.1s, width 0.5s 0.1s, left 0.5s 0.1s, top 0.5s 0.1s;
+    -ms-transition: height 0.5s 0.1s, width 0.5s 0.1s, left 0.5s 0.1s, top 0.5s 0.1s;
+    -o-transition: height 0.5s 0.1s, width 0.5s 0.1s, left 0.5s 0.1s, top 0.5s 0.1s;
+    transition: height 0.5s 0.1s, width 0.5s 0.1s, left 0.5s 0.1s, top 0.5s 0.1s;
+}
+
+body.overlay-active #channel-overlay-circle {
+    height: 300vmax;
+    width: 300vmax;
+
+    left: -150vmax;
+    top: -150vmax;
+
+    -webkit-transition: height 0.5s, width 0.5s, left 0.5s, top 0.5s;
+    -moz-transition: height 0.5s, width 0.5s, left 0.5s, top 0.5s;
+    -ms-transition: height 0.5s, width 0.5s, left 0.5s, top 0.5s;
+    -o-transition: height 0.5s, width 0.5s, left 0.5s, top 0.5s;
+    transition: height 0.5s, width 0.5s, left 0.5s, top 0.5s;
+}
+
+.channel-overlay {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    z-index: 3;
+
+    color: #DDD;
+    font-family: Segoe UI Light, sans-serif;
+
+    transition: visibility 0s 0.5s, opacity 0.25s;
+}
+
+body.overlay-active .channel-overlay {
+    opacity: 1;
+    visibility: visible;
+
+    transition: visibility 0s, opacity 0.25s 0.25s;
+}
+
+#overlay-tabs {
+    display: block;
+    overflow: hidden;
+
+    height: 2.5rem;
+    width: 100%;
+
+    box-shadow: 0 -0.05rem 0 #6f8898 inset;
+}
+
+#overlay-tabs button {
+    border: 0.1rem solid #6f8898;
+    border-bottom: none;
+    border-radius: 0.15rem 0.15rem 0 0;
+
+    margin: 0.5rem 0.2rem 0;
+    padding: 0.2rem 0.4rem;
+
+    max-width: 44%;
+    max-width: calc(50% - 1.3rem);
+
+    background-color: transparent;
+    color: #DDD;
+    font-size: 1.2rem;
+
+    display: block;
+    float: left;
+
+    position: relative;
+    z-index: 4;
+}
+
+#overlay-tabs button:hover,
+#overlay-tabs button:active {
+    color: white;
+}
+
+/* Active tab */
+#overlay-tabs #overlay-tab-search,
+.channel-creating #overlay-tabs #overlay-tab-create{
+    border-bottom: 0.1rem solid #415568;
+    margin-bottom: -0.1rem;
+    box-shadow: 0 0 0.2rem #111;
+    background-color: #415568;
+}
+
+/* Inactive tab */
+.channel-creating #overlay-tabs #overlay-tab-search,
+#overlay-tabs #overlay-tab-create{
+    border-bottom: none;
+    margin-bottom: 0;
+    box-shadow: none;
+    background: none;
+}
+
+#channel-overlay-close {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0.4rem;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    color: #6f8898;
+    font-size: 1.5rem;
+}
+
+#channel-overlay-close::after {
+    display: block;
+    content: '✕';
+}
+
+#channel-overlay-close:hover::after {
+    color: #809aab;
+}
+
+.channel-overlay section {
+    clear: both;
+    padding: 1rem;
+    overflow-y: scroll;
+    height: calc(100vh - 4.5rem);
+}
+
+/* Selected section */
+#channel-overlay-search,
+.channel-creating #channel-overlay-create {
+    display: block;
+}
+
+/* Unselected section */
+#channel-overlay-create,
+.channel-creating #channel-overlay-search {
+    display: none;
+}
+
+.channel-overlay a:link,
+.channel-overlay a:visited {
+    color: #DDD;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.channel-overlay a:hover,
+.channel-overlay a:active {
+    color: white;
+}
+
+.channel-overlay input {
+    color: #222;
+}
+
+.channel-overlay form p {
+    float: left;
+    padding: 1rem 2rem;
+    width: 12rem;
+}
+
+.channel-overlay #channel-overlay-search p {
+    border-top: 0.15rem solid #6f8898;
+    float: left;
+    padding: 1rem 2rem;
+}
+
+#channel-search {
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.channel-overlay .channel-numbers label {
+    display: block;
+    float: left;
+    width: 5.5rem;
+}
+
+.channel-overlay .channel-numbers input {
+    display: block;
+    float: left;
+    margin-right: 0.7rem;
+    width: 4.5rem;
+}
+
+.channel-overlay .channel-days label {
+    display: block;
+    float: left;
+    width: 2rem;
+}
+
+.channel-overlay .channel-days input {
+    display: block;
+    float: left;
+    margin: 0.5rem 0.2rem 0;
+}
+
+.channel-overlay .channel-time input[type=number]{
+    width: 3rem;
+}
+
+.channel-overlay .channel-creation-submit {
+    clear: both;
+    float: none;
+    width: auto;
+    text-align: right;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+
+/* ====================
+    INTERMEDIATE: Menu
+   ==================== */
+
+    nav a {
+        float: left;
+        width: 27%;
+        margin: 0 1.7% 0;
+        padding: 25px 2%;
+    }
+
+    nav li:first-child a {
+        margin-left: 0;
+    }
+
+    nav li:last-child a {
+        margin-right: 0;
+    }
+
+/* ========================
+    INTERMEDIATE: IE Fixes
+   ======================== */
+
+    nav ul li {
+        display: inline;
+    }
+
+    .oldie nav a {
+        margin: 0 0.7%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+/* ====================
+    WIDE: CSS3 Effects
+   ==================== */
+
+    .header-container,
+    .main aside {
+        -webkit-box-shadow: 0 5px 10px #aaa;
+           -moz-box-shadow: 0 5px 10px #aaa;
+                box-shadow: 0 5px 10px #aaa;
+    }
+
+/* ============
+    WIDE: Menu
+   ============ */
+
+    .title {
+    }
+
+    nav {
+        float: right;
+        width: 38%;
+    }
+
+/* ============
+    WIDE: Main
+   ============ */
+
+    .main article {
+        float: left;
+        width: 57%;
+    }
+
+    .main aside {
+        float: right;
+        width: 28%;
+    }
+}
+
+@media only screen and (min-width: 1140px) {
+
+/* ===============
+    Maximal Width
+   =============== */
+
+    .wrapper {
+        width: 1026px; /* 1140px - 10% for margins */
+        margin: 0 auto;
+    }
+
+    .full-height .header-container #note-search {
+        position: static;
+        right: auto;
+    }
+
+    .full-height .wrapper {
+        width: 868px;
+    }
+}
+
+/* ==========================================================================
+   Dark theme
+   ========================================================================== */
+
+body.dark {
+  background-color: #222;
+  color: #DDD;
+}
+
+body.dark .header-container {
+  background-color: #333;
+  border-bottom-color: #222;
+  box-shadow: 0 1px 2px rgba(20, 20, 20, 0.70);
+}
+
+body.dark #note-search {
+  background-color: #333;
+  border-color: #666;
+}
+
+body.dark #expand-menu {
+  color: #DDD;
+}
+
+body.dark .sidebar-container {
+    box-shadow: 0 -1px 2px rgba(20, 20, 20, 0.70);
+}
+
+body.dark a,
+body.dark a:link,
+body.dark a:visited {
+    color: #6666ff;
+}
+
+body.dark a:active {
+    color: #ff6666;
+}
+
+body.dark.full-height .note, body.dark.full-height .main-container form {
+    background-color: #333;
+    border-color: #444;
+}
+
+body.dark.full-height .main-container textarea {
+    color: rgba(255, 255, 255, 0.5);
+}
+body.dark.full-height .main-container textarea:focus {
+    color: #DDD;
+}
+
+body.dark .note-date,
+body.dark .note-author,
+body.dark .note-comments {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark .note-actions a,
+body.dark .note-actions a:link,
+body.dark .note-actions a:visited {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark .note-actions a:hover,
+body.dark .note-actions a:active {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark.full-height .main-container input[type="submit"],
+body.dark #note-delete-cancel {
+    background-color: #888;
+    color: #222;
+}
+
+body.dark #note-delete-proceed {
+    background-color: #b34242;
+    color: #DDD;
+}
+
+body.dark .note-actions a.note-delete:hover, body.dark .note-actions a.note-delete:active {
+    color: rgba(255, 30, 30, 0.7);
+}
+
+body.dark .note:focus, body.dark.full-height .main-container form:focus {
+    box-shadow: 0 0 12px rgba(120, 120, 120, 0.2);
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix::before,
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    *,
+    *::before,
+    *::after {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]::after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
